@@ -1,34 +1,26 @@
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
+  // root: true,
+  // parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module'
   },
   extends: [
-    'prettier',
-    'prettier/standard'
+    'airbnb-base/legacy'
   ],
-  plugins: [
-    'prettier'
-  ],
-  env: {
-    browser: true
+  globals: {
+    '__DEV__': true,
+    '__WECHAT__': true,
+    '__ALIPAY__': true,
+    wx: true,
+    App: true,
+    Page: true,
+    getApp: true,
+    Behavior: true,
+    Component: true
   },
-  // globals: {
-  //   '__DEV__': true,
-  //   '__WECHAT__': true,
-  //   '__ALIPAY__': true,
-  //   App: true,
-  //   Page: true,
-  //   Component: true,
-  //   Behavior: true,
-  //   wx: true,
-  //   getApp: true
-  // },
   rules: {
-    // 'prettier/prettier': 'error',
     'no-console': 0,
-    // 'quotes': ['error', 'single']
+    'func-names': 0,
   }
 }
  
