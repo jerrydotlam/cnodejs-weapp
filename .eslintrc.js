@@ -12,11 +12,14 @@ module.exports = {
     '__WECHAT__': true,
     '__ALIPAY__': true,
     wx: true,
+    getDate: true,
+    getRegExp: true,
     App: true,
     Page: true,
     getApp: true,
     Behavior: true,
-    Component: true
+    Component: true,
+    Promise: true
   },
   rules: {
     'no-console': 0,

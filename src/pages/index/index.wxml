@@ -1,13 +1,15 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<wxs src="../../filters/time.wxs" module="filters"/>
+
+<view class="post-list">
+  <view class="post-item"
+    wx:for="{{posts}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bindtap="handleDetail">
+    <view class="post-item-title">{{item.title}}</view>
+    <view class="post-item-time">{{filters.mformat(item.create_at, 'yyyy-MM-dd')}}</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <view class="g-loading-bottom" wx:if="{{!isRefreshing && isLoadingMore}}">加载中...</view>
+  <view class="g-loading-nodata" wx:elif="{{!isRefreshing}}">没有了</view>
 </view>

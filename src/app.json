@@ -3,13 +3,13 @@
     "pages/index/index",
     "pages/msg/msg",
     "pages/user/user",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/post/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "black",
-    "navigationBarTitleText": "CNodejs社区",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTitleText": "CNodejs社区"
   },
   "tabBar": {
     "list": [

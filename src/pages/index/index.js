@@ -1,56 +1,119 @@
-// index.js
-const app = getApp();
+import { post } from '../../api/index';
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    posts: [],
+    currentPage: 1,
+    isRefreshing: true,
+    isLoadingMore: false
   },
-  // 事件处理函数
-  bindViewTap: function () {
-    // this.data.motto = "fuck"
-    this.setData({
-      motto: 'fuck'
-    });
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
+  /**
+   * 获取翻页列表
+   */
+  getList: function (page = 1, tab = '') {
+    if (page === 1) {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        isRefreshing: true
       });
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        });
-      };
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo;
+      this.setData({
+        isLoadingMore: true
+      });
+    }
+    post
+      .page({ page, limit: 20, tab })
+      .then((res) => {
+        wx.stopPullDownRefresh();
+        this.setData({
+          currentPage: page,
+          isRefreshing: false,
+          isLoadingMore: false
+        });
+        const { data } = res.data;
+        if (page <= 1) {
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            posts: data
+          });
+        } else {
+          this.setData({
+            posts: this.data.posts.concat(data)
           });
         }
       });
-    }
   },
-  getUserInfo: function (e) {
-    app.globalData.userInfo = e.detail.userInfo;
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  /**
+   * 列表项点击处理
+   */
+  handleDetail: function (e) {
+    console.log(e);
+    const target = e.currentTarget;
+    wx.navigateTo({
+      url: `/pages/post/detail/detail?id=${target.dataset.id}`
     });
+  },
+  /**
+   * 生命周期回调—监听页面加载
+   * @param {Object} options
+   */
+  onLoad: function () {
+    console.log('page load');
+    this.getList(1);
+  },
+  /**
+   * 生命周期回调—监听页面显示
+   */
+  onShow: function () {
+    console.log('page show');
+  },
+  /**
+   * 生命周期回调—监听页面初次渲染完成
+   */
+  onReady: function () {
+    console.log('page ready');
+  },
+  /**
+   * 生命周期回调—监听页面隐藏
+   */
+  onHide: function () {
+    console.log('page hide');
+  },
+  /**
+   * 生命周期回调—监听页面卸载
+   */
+  onUnload: function () {
+    console.log('page unload');
+  },
+  /**
+   * 监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    console.log('page pull down refresh');
+    this.getList(1);
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log('page reach bottom');
+    this.getList(this.data.currentPage + 1);
+  },
+  /**
+   * 用户点击右上角转发
+   */
+  onShareAppMessage: function () {
+    console.log('page share app message');
+  },
+  /**
+   * 页面滚动触发事件的处理函数
+   */
+  onPageScroll: function () {
+    console.log('page scroll');
+  },
+  /**
+   * 当前是 tab 页时，点击 tab 时触发
+   * @param {Object} item ```{index:,pagePath:,text:}```
+   */
+  onTabItemTap: function () {
+    console.log('tab item tap');
   }
 });

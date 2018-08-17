@@ -1,0 +1,61 @@
+/**
+ * convert number to `0*` format
+ * @param {Number} number
+ * @return {String}
+ */
+function fix2char(number) {
+  var n = parseInt(number, 10) || 0;
+  return (n < 10 ? '0' : '') + n;
+}
+/**
+* format date with specified formatter
+* ```
+* formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss')
+* ==> '2016-11-11 11:11:11'
+* ```
+* @param {Number|Date} date
+* @param {String} format
+* @return {String}
+*/
+function formatDate(date, format) {
+  /* eslint-disable no-multi-spaces */
+  var map = {};
+  map.yyyy = date.getFullYear();
+  map.yy = (map.yyyy + '').substring(2);
+  map.M  = date.getMonth() + 1;
+  map.MM = fix2char(map.M);
+  map.d  = date.getDate();
+  map.dd = fix2char(map.d);
+  map.H  = date.getHours();
+  map.HH = fix2char(map.H);
+  map.m  = date.getMinutes();
+  map.mm = fix2char(map.m);
+  map.s  = date.getSeconds();
+  map.ss = fix2char(map.s);
+  map.ms = date.getMilliseconds();
+
+  /* eslint-disable vars-on-top */
+  var reg = getRegExp('\byyyy|yy|MM|M|dd|d|HH|H|mm|ms|ss|m|s\b', 'g');
+  return format.replace(reg, function (key) {
+    var r = map[key];
+    return r !== undefined ? r : key;
+  });
+}
+
+/**
+* 格式化后台返回的时间
+* @param {String} date
+* @param {String} format
+* @return {String}
+*/
+function mformat(date, format) {
+  if (!date) {
+    return '';
+  }
+  var d = getDate(date);
+  return formatDate(d, format);
+}
+
+module.exports = {
+  mformat: mformat
+};

@@ -43,7 +43,7 @@ App({
    */
   onShow: function () {
     console.log('app show');
-    this.api();
+    // this.api();
   },
   /**
    * 当小程序从前台进入后台，会触发 onHide
@@ -72,9 +72,24 @@ App({
   /**
    * 可以添加任意的函数或数据到 Object 参数中，用`this`可以访问
    */
-  api: function () {
-    console.log('app invoke api');
-  },
+  // api: function (url, data) {
+  //   const promise = new Promise((resolve, reject) => {
+  //     wx.request({
+  //       url: url,
+  //       data: data,
+  //       header: {},
+  //       method: 'POST',
+  //       dataType: 'json',
+  //       success: (res) => {
+  //         resolve(res);
+  //       },
+  //       fail: (err) => {
+  //         reject(err);
+  //       }
+  //     });
+  //   });
+  //   return promise;
+  // },
   globalData: {
     userInfo: null
   }
