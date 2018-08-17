@@ -6,7 +6,8 @@
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rm -rf dist/*",
-    "lint": "eslint -c .eslintrc ./src"
+    "lint": "eslint -c .eslintrc ./src",
+    "postinstall": "cross-env NODE_ENV=production node ./bin/cnode.js"
   },
   "author": "linh <linh@fxiaoke.com>",
   "license": "MIT",
@@ -21,5 +22,10 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "htmlparser": "^1.7.7",
+    "weui-wxss": "^1.1.1"
   }
 }

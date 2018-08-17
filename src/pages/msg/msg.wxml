@@ -1,2 +1,15 @@
-<!--pages/msg/msg.wxml-->
-<text>pages/msg/msg.wxml</text>
+<!--index.wxml-->
+<wxs src="../../filters/time.wxs" module="filters"/>
+
+<view class="msg-list">
+  <view class="msg-item"
+    wx:for="{{rmsgs}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bindtap="handleDetail">
+    <view class="msg-item-title">{{item.title}}</view>
+    <view class="msg-item-time">{{filters.mformat(item.create_at, 'yyyy-MM-dd')}}</view>
+  </view>
+  <view class="g-loading-bottom" wx:if="{{!isRefreshing && isLoadingMore}}">加载中...</view>
+  <view class="g-loading-nodata" wx:elif="{{!isRefreshing}}">没有了</view>
+</view>

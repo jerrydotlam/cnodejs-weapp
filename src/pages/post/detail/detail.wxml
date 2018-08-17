@@ -1,2 +1,1 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<rich-text class="post-detail article" nodes="{{nodes}}" bindtap="tap"></rich-text>

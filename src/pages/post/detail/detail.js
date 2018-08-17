@@ -1,17 +1,27 @@
 import { post } from '../../../api/index';
+import parser from '../../../lib/parser';
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    post: {}
+    post: {},
+    nodes: ''
   },
   getDetail: function (id) {
     post
       .info({ topicId: id })
       .then((res) => {
-        console.log(res);
+        const { data } = res.data;
+        parser
+          .parse(data.content)
+          .then((result) => {
+            console.log(result);
+            this.setData({
+              nodes: result
+            });
+          });
       });
   },
   /**
