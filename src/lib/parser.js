@@ -54,7 +54,7 @@ function parseNode(node, level) {
     // type: 'node', // 可以不写
     name: name,
     attrs: {
-      class: 'rich-text-' + node.name
+      class: 'weui-article__' + node.name
     },
     children: []
   };
@@ -67,6 +67,7 @@ function parseNode(node, level) {
       xnode.attrs.src = attribs.src;
       xnode.attrs['data-src'] = attribs.src;
     }
+    xnode.attrs.style = 'max-width:100%';
   } else if (name === 'col' || name === 'colgroup') {
     if (attribs.span) {
       xnode.attrs.span = attribs.span;

@@ -8,7 +8,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "black",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "CNodejs社区"
   },
   "tabBar": {

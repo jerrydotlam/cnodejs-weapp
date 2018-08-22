@@ -1,0 +1,7 @@
+var dict = require('./dict.wxs');
+var time = require('./time.wxs');
+
+module.exports = {
+  dict: dict,
+  time: time
+};

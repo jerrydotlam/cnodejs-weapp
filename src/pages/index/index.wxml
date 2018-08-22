@@ -1,15 +1,32 @@
 <!--index.wxml-->
-<wxs src="../../filters/time.wxs" module="filters"/>
+<wxs src="../../filters/index.wxs" module="filters"/>
 
 <view class="post-list">
-  <view class="post-item"
+  <view class="weui-panel"
     wx:for="{{posts}}"
     wx:key="id"
     data-id="{{item.id}}"
     bindtap="handleDetail">
-    <view class="post-item-title">{{item.title}}</view>
-    <view class="post-item-time">{{filters.mformat(item.create_at, 'yyyy-MM-dd')}}</view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">{{item.title}}</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta" wx:if="{{item.top}}">置顶</view>
+          <view class="weui-media-box__info__meta" wx:elif="{{item.good}}">精华</view>
+          <view class="weui-media-box__info__meta" wx:else>{{filters.dict.strTab(item.tab)}}</view>
+          <view class="weui-media-box__info__meta">{{filters.time.mformat(item.create_at, 'yyyy-MM-dd')}}</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+            阅读：{{item.visit_count}} 回复：{{item.reply_count}}
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
-  <view class="g-loading-bottom" wx:if="{{!isRefreshing && isLoadingMore}}">加载中...</view>
-  <view class="g-loading-nodata" wx:elif="{{!isRefreshing}}">没有了</view>
+  <view class="weui-loadmore" wx:if="{{!isRefreshing && isLoadingMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:elif="{{!isRefreshing}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
 </view>
