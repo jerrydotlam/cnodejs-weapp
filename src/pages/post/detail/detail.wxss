@@ -42,7 +42,7 @@
     word-break:break-word;
     word-wrap:break-word;
 }
-.article .rich-text-img{
+.article .rich-text-img {
     border:1px solid #ccc;
     display:block;
     margin:10px 0 5px;

@@ -48,7 +48,7 @@ export default {
    * 用户所收藏的主题
    */
   listCollect: {
-    path: 'topic_collect/alsotang',
+    path: 'topic_collect/:username',
     method: 'GET'
   },
   /**
