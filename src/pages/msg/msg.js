@@ -1,7 +1,12 @@
 import { user } from '../../api/index';
 
+const sliderWidth = 96;
 Page({
   data: {
+    tabs: ['未读消息', '已读消息'],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0,
     rmsgs: [],
     umsgs: [],
     currentPage: 1,
@@ -44,11 +49,27 @@ Page({
         }
       });
   },
+  handleTabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options);
+    wx.getSystemInfo({
+      success: (res) => {
+        const sliderLeft = (res.windowWidth / this.data.tabs.length - sliderWidth) / 2;
+        const sliderOffset = res.windowWidth / this.data.tabs.length * this.data.activeIndex;
+        this.setData({
+          sliderLeft: sliderLeft,
+          sliderOffset: sliderOffset
+        });
+      }
+    });
     this.getList(1);
   },
   /**

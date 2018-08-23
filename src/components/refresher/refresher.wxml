@@ -1,9 +1,6 @@
-<!--index.wxml-->
-<wxs src="../../filters/index.wxs" module="filters"/>
-
-<view class="post-list">
-  <cnode-post-item
-    wx:for="{{posts}}"
+<view class="cnode-refresher">
+  <refresher-item
+    wx:for="{{list}}"
     wx:key="{{item.id}}"
     post="{{item}}" />
   <view class="weui-loadmore" wx:if="{{!isRefreshing && isLoadingMore}}">

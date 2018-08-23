@@ -1,0 +1,20 @@
+<wxs src="../../filters/index.wxs" module="filters"/>
+
+<view class="post-item" data-id="{{post.id}}" bindtap="handleTap">
+  <view class="post-item-user">
+    <image class="user-avatar" src="{{post.author.avatar_url}}" lazy-load="true" />
+  </view>
+  <view class="post-item-info">
+    <view class="info-title">
+      <view class="info-cate info-cate-top" wx:if="{{post.top}}">置顶</view>
+      <view class="info-cate info-cate-good" wx:elif="{{post.good}}">精华</view>
+      <view class="info-cate" wx:else>{{filters.dict.strTab(post.tab)}}</view>
+      {{post.title}}
+    </view>
+    <view class="info-metas">
+      <view class="info-meta">{{filters.time.mformat(post.create_at, 'yyyy-MM-dd')}}</view>
+      <view class="info-meta inf-meta-s">阅读：{{post.visit_count}}</view>
+      <view class="info-meta inf-meta-s">回复：{{post.reply_count}}</view>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,6 @@
-<rich-text class="post-detail article" nodes="{{nodes}}" bindtap="tap"></rich-text>
+<view class="post-detail">
+  <rich-text class="post-detail-article weui-article" nodes="{{nodes}}" bindtap="tap"></rich-text>
+  <view class="post-reply-list">
+    回复列表
+  </view>
+</view>
