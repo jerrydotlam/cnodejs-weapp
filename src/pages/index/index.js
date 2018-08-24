@@ -3,44 +3,28 @@ import { post } from '../../api/index';
 Page({
   data: {
     posts: [],
+    fetcher: {
+      page: (params) => {
+        return post.page(params);
+      }
+    },
     currentPage: 1,
     isRefreshing: true,
     isLoadingMore: false
   },
-  /**
-   * 获取翻页列表
-   */
-  getList: function (page = 1, tab = '') {
-    if (page === 1) {
-      this.setData({
-        isRefreshing: true
-      });
-    } else {
-      this.setData({
-        isLoadingMore: true
-      });
-    }
-    post
-      .page({ page, limit: 20, tab })
-      .then((res) => {
-        wx.stopPullDownRefresh();
-        this.setData({
-          currentPage: page,
-          isRefreshing: false,
-          isLoadingMore: false
-        });
-        const { data } = res.data;
-        if (page <= 1) {
-          this.setData({
-            posts: data
-          });
-        } else {
-          this.setData({
-            posts: this.data.posts.concat(data)
-          });
-        }
-      });
-  },
+  // /**
+  //  * 获取翻页列表
+  //  */
+  // getList: function (event) {
+  //   const { page } = event.detail;
+  //   post
+  //     .page({ page, limit: 10, tab: '' })
+  //     .then((res) => {
+  //       wx.stopPullDownRefresh();
+  //       const { data } = res.data;
+  //       this.$list.setPageData(page, data);
+  //     });
+  // },
   /**
    * 列表项点击处理
    */
@@ -57,7 +41,8 @@ Page({
    */
   onLoad: function () {
     console.log('page load');
-    this.getList(1);
+    this.$list = this.selectComponent('#post-list-comp');
+    this.$list.getPageData();
   },
   /**
    * 生命周期回调—监听页面显示
@@ -88,14 +73,14 @@ Page({
    */
   onPullDownRefresh: function () {
     console.log('page pull down refresh');
-    this.getList(1);
+    this.$list.getPageData();
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
     console.log('page reach bottom');
-    this.getList(this.data.currentPage + 1);
+    this.$list.getMore();
   },
   /**
    * 用户点击右上角转发

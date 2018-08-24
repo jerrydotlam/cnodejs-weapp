@@ -58,7 +58,7 @@ function parseNode(node, level) {
     },
     children: []
   };
-  var attribs = node.attribs;
+  var attribs = node.attribs || {};
   if (name === 'img') {
     if (attribs.alt) {
       xnode.attrs.alt = attribs.alt;

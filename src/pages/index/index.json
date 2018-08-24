@@ -2,6 +2,7 @@
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50,
   "usingComponents": {
+    "cnode-post-list": "../../components/refresher/refresher",
     "cnode-post-item": "../../components/postitem/postitem"
   }
 }

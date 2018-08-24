@@ -3,20 +3,33 @@ Component({
    * 组件的对外属性
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
-    }
+    /**
+     * 最大列表长度，超过该长度不再向下滚动获取数据
+     */
+    maxLength: {
+      type: Number,
+      value: 30
+    },
+    /**
+     * 数据访问对象，需要有`page`函数
+     */
+    fetcher: Object,
+    /**
+     * 外部对象的额外参数对象
+     */
+    payload: Object
   },
   /**
    * 组件的内部数据，和 properties 一同用于组件的模版渲染
    */
   data: {
-    pager: {
+    list: [],
+    page: {
       size: 10,
       curr: 0
     },
-    isRefreshing: true, // 因为一开始没有数据，所以一开始必然是刷新数据
+    hasMoreData: true, // 一开始，假设有更多数据
+    isRefreshing: false, // 因为一开始没有数据，所以一开始必然是刷新数据
     isLoadingMore: false
   },
   /**
@@ -24,24 +37,58 @@ Component({
    */
   methods: {
     getPageData: function (page = 1) {
+      if (page > 1 && !this.data.hasMoreData) {
+        return;
+      }
       if (page === 1) {
         this.setData({
+          hasMoreData: true,
           isRefreshing: true,
           isLoadingMore: false
         });
       } else {
         this.setData({
+          hasMoreData: true,
           isRefreshing: false,
           isLoadingMore: true
         });
       }
-      this.triggerEvent('fetchData', page);
+      const params = Object.assign({}, this.data.payload,
+        { page, limit: this.data.page.size });
+      if (this.data.fetcher && typeof this.data.fetcher.page === 'function') {
+        this.data.fetcher
+          .page(params)
+          .then((res) => {
+            wx.stopPullDownRefresh();
+            const { data } = res.data;
+            this.setPageData(page, data);
+          })
+          .catch((err) => {
+            wx.stopPullDownRefresh();
+            console.warn(err);
+          });
+      } else {
+        this.triggerEvent('fetchData', { params });
+      }
+    },
+    setPageData: function (page, dataList) {
+      // 如果是第一页，数据全部清空
+      const list = page <= 1 ? dataList : this.data.list.concat(dataList);
+      const hasMoreData = dataList.length >= this.data.page.size
+        && list.length < this.data.maxLength;
+      this.setData({
+        list: list,
+        'page.curr': page,
+        hasMoreData,
+        isRefreshing: false,
+        isLoadingMore: false
+      });
+    },
+    getMore: function () {
+      this.getPageData(this.data.page.curr + 1);
     },
     handleTap: function (e) {
-      const target = e.currentTarget;
-      wx.navigateTo({
-        url: `/pages/post/detail/detail?id=${target.dataset.id}`
-      });
+      this.triggerEvent('tapDetail', e);
     }
   },
   /**

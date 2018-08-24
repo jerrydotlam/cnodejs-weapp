@@ -3,11 +3,11 @@
     wx:for="{{list}}"
     wx:key="{{item.id}}"
     post="{{item}}" />
-  <view class="weui-loadmore" wx:if="{{!isRefreshing && isLoadingMore}}">
+  <view class="weui-loadmore" style="text-align: center;" wx:if="{{isLoadingMore}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">正在加载</view>
   </view>
-  <view class="weui-loadmore weui-loadmore_line" wx:elif="{{!isRefreshing}}">
-    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  <view class="weui-loadmore weui-loadmore_line" style="text-align: center;" wx:elif="{{!hasMoreData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有了</view>
   </view>
 </view>
