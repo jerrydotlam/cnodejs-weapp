@@ -91,6 +91,7 @@ App({
   //   return promise;
   // },
   globalData: {
+    accessToken: '',
     userInfo: null
   }
 });

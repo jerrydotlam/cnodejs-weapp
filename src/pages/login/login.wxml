@@ -1,0 +1,1 @@
+<view bind:tap="handleScan">点击扫码</view>

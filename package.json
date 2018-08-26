@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "htmlparser": "^1.7.7",
+    "mobx": "^5.0.5",
     "weui-wxss": "^1.1.1"
   }
 }
