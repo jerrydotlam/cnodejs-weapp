@@ -60,6 +60,11 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    wx.$
+      .getSystemInfo()
+      .then((res) => {
+        console.log(res);
+      });
     wx.getSystemInfo({
       success: (res) => {
         const sliderLeft = (res.windowWidth / this.data.tabs.length - sliderWidth) / 2;
