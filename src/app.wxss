@@ -1,4 +1,4 @@
-@import './lib/weui.wxss';
+@import './npm/weui.wxss';
 
 /**app.wxss**/
 .container {
