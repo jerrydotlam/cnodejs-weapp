@@ -29,7 +29,7 @@ modules.forEach((module) => {
     name: `js-module-${module.name}`,
     entry: module.entry,
     output: {
-      path: path.resolve(__dirname, 'src', 'lib'),
+      path: path.resolve(__dirname, 'src', 'npm'),
       filename: module.output.filename,
       library: module.output.export,
       libraryTarget: 'commonjs'

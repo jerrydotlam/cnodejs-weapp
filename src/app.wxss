@@ -10,10 +10,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }
-/* .g-loading-bottom,
-.g-loading-nodata {
-  font-size:22rpx;
-  line-height: 33rpx;
-  text-align: center;
-  margin-top: 5rpx;
-} */
+.cnode-user-link {
+  display: inline-block;
+  color: #08c;
+}

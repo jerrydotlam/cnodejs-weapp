@@ -6,13 +6,21 @@ module.exports = Behavior({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      console.log(getCurrentPages());
+      console.log(this.route);
       console.log('%s lifecycle: load', this.is);
       console.log(options);
       console.log('access token = ', app.globalData.accessToken);
       if (!app.globalData.accessToken) {
+        // if (getCurrentPages().length <= 1) {
+        //   wx.navigateTo({
+        //     url: '/pages/login/login'
+        //   });
+        // } else {
         wx.redirectTo({
           url: '/pages/login/login'
         });
+        // }
       }
     },
     /**

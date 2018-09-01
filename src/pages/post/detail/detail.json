@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "cnode-reply-item": "../../../components/replyitem/replyitem"
+  }
+}

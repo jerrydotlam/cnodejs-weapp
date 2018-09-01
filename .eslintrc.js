@@ -14,6 +14,7 @@ module.exports = {
     wx: true,
     getDate: true,
     getRegExp: true,
+    getCurrentPages: true,
     App: true,
     Page: true,
     getApp: true,
@@ -26,4 +27,3 @@ module.exports = {
     'func-names': 0,
   }
 }
- 

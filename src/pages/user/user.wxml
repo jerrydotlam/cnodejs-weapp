@@ -1,2 +1,41 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="weui-form-preview">
+  <view class="weui-form-preview__hd">
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">积分</view>
+      <view class="weui-form-preview__value_in-hd">{{userInfo.score}}</view>
+    </view>
+  </view>
+  <view class="weui-form-preview__bd">
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">用户名</view>
+      <view class="weui-form-preview__value">{{userInfo.loginname}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">电子邮件</view>
+      <view class="weui-form-preview__value">{{userInfo.email}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">个人网站</view>
+      <view class="weui-form-preview__value">{{userInfo.website}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">所在地点</view>
+      <view class="weui-form-preview__value">{{userInfo.location}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">微博</view>
+      <view class="weui-form-preview__value">{{userInfo.weibo}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">Github</view>
+      <view class="weui-form-preview__value">{{userInfo.github}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">个性签名</view>
+      <view class="weui-form-preview__value">{{userInfo.signature}}</view>
+    </view>
+  </view>
+  <view class="weui-form-preview__ft">
+    <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">退出登陆</navigator>
+  </view>
+</view>

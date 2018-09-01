@@ -1,0 +1,16 @@
+<wxs src="../../filters/index.wxs" module="filters"/>
+
+<view class="reply-item" data-id="{{reply.id}}" bindtap="handleTap">
+  <view class="reply-item-user">
+    <image class="user-avatar" src="{{reply.author.avatar_url}}" lazy-load="true" />
+  </view>
+  <view class="reply-item-info">
+    <view class="info-meta">{{reply.autor.loginname}}</view>
+    <view class="info-meta">{{filters.time.mformat(reply.create_at, 'yyyy-MM-dd')}}</view>
+    <view class="info-meta">点赞 {{reply.ups.length}}</view>
+    <view class="info-meta">回复</view>
+  </view>
+  <view class="reply-item-body">
+    {{reply.content}}
+  </view>
+</view>

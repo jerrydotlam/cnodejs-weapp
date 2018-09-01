@@ -13,7 +13,8 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.9",
 	"appid": "wxbdccb940b549af38",
-	"projectname": "cnodejs-miniapp",
+	"projectname": "cnodejs-miniprogram",
+	"miniprogramRoot": "./src",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

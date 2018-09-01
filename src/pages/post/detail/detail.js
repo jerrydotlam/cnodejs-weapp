@@ -14,6 +14,9 @@ Page({
       .info({ topicId: id })
       .then((res) => {
         const { data } = res.data;
+        this.setData({
+          post: data
+        });
         parser
           .parse(data.content)
           .then((result) => {

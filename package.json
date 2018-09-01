@@ -9,7 +9,7 @@
     "lint": "eslint -c .eslintrc ./src",
     "build": "webpack --config webpack.config.js",
     "hook:lib": "webpack --config webpack.config.js",
-    "hook:css": "lessc ./node_modules/weui-wxss/dist/app.wxss ./src/lib/weui.wxss",
+    "hook:css": "lessc ./node_modules/weui-wxss/dist/app.wxss ./src/npm/weui.wxss",
     "postinstall": "cross-env NODE_ENV=production npm run hook:css && npm run hook:lib"
   },
   "author": "linh <linh@fxiaoke.com>",
