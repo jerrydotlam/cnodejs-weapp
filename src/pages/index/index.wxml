@@ -2,6 +2,7 @@
 <wxs src="../../filters/index.wxs" module="filters"/>
 
 <view class="post-list">
+  <view>{{props.user.testname}}</view>
   <cnode-post-list id="post-list-comp"
     generic:refresher-item="cnode-post-item"
     bind:tap-detail="handleDetail"
