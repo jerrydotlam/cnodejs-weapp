@@ -8,15 +8,15 @@ function fix2char(number) {
   return (n < 10 ? '0' : '') + n;
 }
 /**
-* format date with specified formatter
-* ```
-* formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss')
-* ==> '2016-11-11 11:11:11'
-* ```
-* @param {Number|Date} date
-* @param {String} format
-* @return {String}
-*/
+ * format date with specified formatter
+ * ```
+ * formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss')
+ * ==> '2016-11-11 11:11:11'
+ * ```
+ * @param {Number|Date} date
+ * @param {String} format
+ * @return {String}
+ */
 function formatDate(date, format) {
   /* eslint-disable no-multi-spaces */
   var map = {};
@@ -43,11 +43,11 @@ function formatDate(date, format) {
 }
 
 /**
-* 格式化后台返回的时间
-* @param {String} date
-* @param {String} format
-* @return {String}
-*/
+ * 格式化后台返回的时间
+ * @param {String} date
+ * @param {String} format
+ * @return {String}
+ */
 function mformat(date, format) {
   if (!date) {
     return '';
