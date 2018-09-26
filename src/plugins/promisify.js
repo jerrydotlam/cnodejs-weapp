@@ -29,7 +29,8 @@ const $ = {};
  */
 const promisifyMethods = [
   'request',
-  'getSystemInfo'
+  'getSystemInfo',
+  'scanCode'
 ];
 /**
  * 保留给调试用

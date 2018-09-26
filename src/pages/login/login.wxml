@@ -1,1 +1,8 @@
-<view bind:tap="handleScan">点击扫码</view>
+<view class="cn-login">
+  <view class="cn-logo">
+    <image class="cn-logo-svg" src="../../assets/cnodejs_light.svg" lazy-load="true" />
+  </view>
+  <view class="cn-scan">
+    <button bind:tap="handleScan" class="weui-btn" type="primary" disabled="{{isLoading}}">扫码登陆</button>
+  </view>
+</view>

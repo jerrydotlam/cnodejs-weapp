@@ -1,0 +1,20 @@
+.cn-login {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: #444;
+}
+
+.cn-logo {
+  margin-bottom: 100rpx;
+}
+
+.cn-logo .cn-logo-svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.cn-scan {
+  padding: 0 20rpx;
+}
