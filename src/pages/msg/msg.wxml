@@ -1,28 +1,10 @@
-<!--index.wxml-->
-<wxs src="../../filters/time.wxs" module="filters"/>
-
 <view class="msg-list">
-  <view class="weui-tab">
-    <view class="weui-navbar">
-      <block wx:for="{{tabs}}" wx:key="*this">
-        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="handleTabClick">
-          <view class="weui-navbar__title">{{item}}</view>
-        </view>
-      </block>
-      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  <cnode-tab slider-width="96" tabs="{{['未读消息', '已读消息']}}" bind:change="handleTabChange">
+    <view class="cn-tab__content" hidden="{{activeType !== 'unread'}}">
+      <cnode-msg-list list="{{umsgs}}" />
     </view>
-    <view class="weui-tab__panel">
-      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-        <view class="msg-item"
-          wx:for="{{rmsgs}}"
-          wx:key="id"
-          data-id="{{item.id}}"
-          bindtap="handleDetail">
-          <view class="msg-item-title">{{item.title}}</view>
-          <view class="msg-item-time">{{filters.mformat(item.create_at, 'yyyy-MM-dd')}}</view>
-        </view>
-      </view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+    <view class="cn-tab__content" hidden="{{activeType !== 'read'}}">
+      <cnode-msg-list list="{{rmsgs}}" />
     </view>
-  </view>
+  </cnode-tab>
 </view>

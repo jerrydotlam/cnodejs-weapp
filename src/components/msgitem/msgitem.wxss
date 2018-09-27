@@ -1,0 +1,19 @@
+.msg-item {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+  padding: 15rpx;
+  margin-bottom: 15rpx;
+}
+.msg-item .user-link,
+.msg-item .topic-link {
+  display: inline-block;
+  color: #08c;
+}
+.msg-item-title {
+  font-size: 28rpx;
+}
+.msg-item-time {
+  font-size: 20rpx;
+  color: #999;
+}

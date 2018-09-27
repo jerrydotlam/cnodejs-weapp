@@ -1,4 +1,8 @@
 {
   "enablePullDownRefresh": true,
-  "onReachBottomDistance": 50
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "cnode-tab": "../../components/_tab/tab",
+    "cnode-msg-list": "../../components/msglist/msglist"
+  }
 }

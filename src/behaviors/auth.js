@@ -8,7 +8,7 @@ module.exports = Behavior({
     onLoad: function (options) {
       console.log(getCurrentPages());
       console.log(this.route);
-      console.log('%s lifecycle: load', this.is);
+      console.log('=====%s lifecycle: load', this.is);
       console.log(options);
       console.log('access token = ', app.globalData.accessToken);
       if (!app.globalData.accessToken) {

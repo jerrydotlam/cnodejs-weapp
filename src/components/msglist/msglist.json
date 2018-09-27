@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cnode-msg-item": "../msgitem/msgitem"
+  }
+}

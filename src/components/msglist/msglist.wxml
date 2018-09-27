@@ -1,0 +1,7 @@
+<view class="msg-list">
+    <cnode-msg-item
+      wx:for="{{list}}"
+      wx:key="id"
+      msg="{{item}}"
+    />
+  </view>

@@ -1,0 +1,47 @@
+<wxs src="../../filters/index.wxs" module="filters"/>
+
+<view class="msg-item" data-id="{{msg.id}}">
+  <view class="msg-item-reply" wx:if="{{msg.type === 'reply'}}">
+    <navigator
+      class="user-link"
+      url="/pages/user/user?loginname={{msg.author.loginname}}"
+      open-type="navigate">{{msg.author.loginname}}</navigator>
+    回复了你的话题
+    <navigator
+      class="topic-link"
+      url="/pages/post/detail/detail?id={{msg.topic.id}}"
+      open-type="navigate">{{msg.topic.title}}</navigator>
+  </view>
+  <view class="msg-item-reply2" wx:elif="{{msg.type === 'reply2'}}">
+    <navigator
+      class="user-link"
+      url="/pages/user/user?loginname={{msg.author.loginname}}"
+      open-type="navigate">{{msg.author.loginname}}</navigator>
+    在话题
+    <navigator
+      class="topic-link"
+      url="/pages/post/detail/detail?id={{msg.topic.id}}"
+      open-type="navigate">{{msg.topic.title}}</navigator>
+    中回复了你的回复
+  </view>
+  <view class="msg-item-follow" wx:elif="{{msg.type === 'follow'}}">
+    <navigator
+      class="user-link"
+      url="/pages/user/user?loginname={{msg.author.loginname}}"
+      open-type="navigate">{{msg.author.loginname}}</navigator>
+    关注了你
+  </view>
+  <view class="msg-item-at" wx:elif="{{msg.type === 'at'}}">
+    <navigator
+      class="user-link"
+      url="/pages/user/user?loginname={{msg.author.loginname}}"
+      open-type="navigate">{{msg.author.loginname}}</navigator>
+    在话题
+    <navigator
+      class="topic-link"
+      url="/pages/post/detail/detail?id={{msg.topic.id}}"
+      open-type="navigate">{{msg.topic.title}}</navigator>
+    中@了你
+  </view>
+  <view class="msg-item-time">{{filters.mformat(msg.create_at, 'yyyy-MM-dd')}}</view>
+</view>

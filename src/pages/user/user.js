@@ -2,6 +2,7 @@ import { user } from '../../api/index';
 import auth from '../../behaviors/auth';
 
 const app = getApp();
+
 Component({
   /**
    * 页面的初始数据
@@ -12,18 +13,12 @@ Component({
       avatarUrl: '',
       score: 0,
       createAt: '',
-      recentTopics: []
+      recentTopics: [],
+      recentReplies: []
     }
   },
   behaviors: [auth],
   methods: {
-    /**
-     * 生命周期回调—监听页面加载
-     * @param {Object} options
-     */
-    onLoad: function () {
-      console.log('page load');
-    },
     onShow: function () {
       console.log('page show');
       const { loginName } = app.globalData.userInfo || {};
@@ -49,12 +44,6 @@ Component({
             });
           }
         });
-    },
-    /**
-     * 点击 tab 时触发
-     */
-    onTabItemTap: function (item) {
-      console.log('=======', item);
     }
   }
 });

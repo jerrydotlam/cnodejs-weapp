@@ -1,12 +1,10 @@
 import { user } from '../../api/index';
 
-const sliderWidth = 96;
+const app = getApp();
 Page({
   data: {
     tabs: ['未读消息', '已读消息'],
-    activeIndex: 0,
-    sliderOffset: 0,
-    sliderLeft: 0,
+    activeType: 'unread',
     rmsgs: [],
     umsgs: [],
     currentPage: 1,
@@ -27,7 +25,7 @@ Page({
       });
     }
     user
-      .listMsg({ page, limit: 20, accesstoken: '7282a4e7-08ea-4473-9aec-b3675d298fec' })
+      .listMsg({ page, limit: 20, accesstoken: app.globalData.accessToken })
       .then((res) => {
         wx.stopPullDownRefresh();
         this.setData({
@@ -49,10 +47,11 @@ Page({
         }
       });
   },
-  handleTabClick: function (e) {
+  handleTabChange: function (e) {
+    const index = parseInt(e.detail.id, 10);
+    console.log(index, index === 0);
     this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
+      activeType: index === 0 ? 'unread' : 'read'
     });
   },
   /**
@@ -60,21 +59,6 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    wx.$
-      .getSystemInfo()
-      .then((res) => {
-        console.log(res);
-      });
-    wx.getSystemInfo({
-      success: (res) => {
-        const sliderLeft = (res.windowWidth / this.data.tabs.length - sliderWidth) / 2;
-        const sliderOffset = res.windowWidth / this.data.tabs.length * this.data.activeIndex;
-        this.setData({
-          sliderLeft: sliderLeft,
-          sliderOffset: sliderOffset
-        });
-      }
-    });
     this.getList(1);
   },
   /**
