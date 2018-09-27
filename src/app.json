@@ -16,15 +16,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "assets/tab-home.png",
+        "selectedIconPath": "assets/tab-home-green.png"
       },
       {
         "pagePath": "pages/msg/msg",
-        "text": "消息"
+        "text": "消息",
+        "iconPath": "assets/tab-msg.png",
+        "selectedIconPath": "assets/tab-msg-green.png"
       },
       {
         "pagePath": "pages/user/user",
-        "text": "我"
+        "text": "我",
+        "iconPath": "assets/tab-my.png",
+        "selectedIconPath": "assets/tab-my-green.png"
       }
     ]
   },
