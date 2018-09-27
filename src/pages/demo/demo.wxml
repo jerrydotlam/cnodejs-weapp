@@ -1,0 +1,1 @@
+<view>{{props.user.testname}}</view>

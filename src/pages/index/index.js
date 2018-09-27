@@ -1,11 +1,6 @@
 import { post } from '../../api/index';
-import mobx from '../../npm/mobx';
-import user from '../../store/user';
 
 Page({
-  store: {
-    user: user.default
-  },
   data: {
     posts: [],
     fetcher: {
@@ -45,32 +40,15 @@ Page({
    * @param {Object} options
    */
   onLoad: function () {
-    this.store = mobx.observable(this.store);
-    console.log(this.store);
-    this.$autorun = mobx.autorun(() => {
-      console.log('autorun', this.store);
-      this.update();
-    });
     console.log('page load');
     this.$list = this.selectComponent('#post-list-comp');
     this.$list.getPageData();
-  },
-  update: function () {
-    // console.log('_update');
-    var props = this.store || {};
-    // console.log(toJS(props))
-    // console.log('--------------------------', props.user.testname);
-    this.setData({ props: mobx.toJS(props) });
-    // this.props = this.props ? toJS(this.props): {}
   },
   /**
    * 生命周期回调—监听页面显示
    */
   onShow: function () {
     console.log('page show');
-    this.store.user.testname = 'fuck';
-    // this.store.user.updateTestname('....');
-    this.store.user.updateTestlist();
   },
   /**
    * 生命周期回调—监听页面初次渲染完成
@@ -89,9 +67,6 @@ Page({
    */
   onUnload: function () {
     console.log('page unload');
-    if (this.$autorun) {
-      this.$autorun();
-    }
   },
   /**
    * 监听用户下拉动作
