@@ -1,17 +1,25 @@
+import parser from '../../lib/parser';
+
 Component({
+  options: {
+    addGlobalClass: true
+  },
   properties: {
     reply: {
       type: Object,
       value: {}
     }
   },
-  methods: {
-    handleTap: function (e) {
-      const target = e.currentTarget;
-      console.log(target);
-      // wx.navigateTo({
-      //   url: `/pages/post/detail/detail?id=${target.dataset.id}`
-      // });
+  lifetimes: {
+    attached: function () {
+      parser
+        .parse(this.data.reply.content)
+        .then((result) => {
+          console.log(result);
+          this.setData({
+            'reply.nodes': result
+          });
+        });
     }
   }
 });
