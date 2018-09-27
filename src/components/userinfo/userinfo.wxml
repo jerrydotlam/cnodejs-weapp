@@ -1,0 +1,34 @@
+<wxs src="../../filters/index.wxs" module="filters"/>
+
+<view class="user-info">
+  <view class="user-info-basic">
+    <view class="user-info-avatar">
+      <image class="user-avatar" src="{{data.avatarUrl}}" />
+    </view>
+    <view class="user-info-other">
+      <view class="user-name">{{data.loginName}}</view>
+      <view class="user-info-meta">
+        <view class="user-jointime">注册时间：{{filters.time.mformat(data.createAt, 'yyyy-MM-dd')}}</view>
+        <view class="user-score">积分：{{data.score}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="user-info-topics">
+    <cnode-tab slider-width="96" tabs="{{['最近回复', '最近发布']}}" bind:change="handleTabChange">
+      <view class="cn-tab__content" hidden="{{activeType !== 'reply'}}">
+        <cnode-user-topic
+          wx:for="{{data.recentReplies}}"
+          wx:key="id"
+          topic="{{item}}"
+        ></cnode-user-topic>
+      </view>
+      <view class="cn-tab__content" hidden="{{activeType !== 'topic'}}">
+        <cnode-user-topic
+          wx:for="{{data.recentTopics}}"
+          wx:key="id"
+          topic="{{item}}"
+        ></cnode-user-topic>
+      </view>
+    </cnode-tab>
+  </view>
+</view>

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "cnode-user-info": "../../components/userinfo/userinfo",
+    "cnode-tab": "../../components/_tab/tab"
+  }
 }

@@ -3,7 +3,7 @@
  */
 export default {
   info: {
-    path: 'user/:loginName',
+    path: 'user/alsotang',
     method: 'GET'
   },
   login: {

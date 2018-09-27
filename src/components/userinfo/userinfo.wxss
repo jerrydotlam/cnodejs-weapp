@@ -1,0 +1,27 @@
+.user-info-basic {
+  display: flex;
+  padding: 20rpx;
+  background: #444;
+}
+.user-info-basic .user-info-avatar {
+  flex: 0 0 150rpx;
+}
+.user-info-basic .user-avatar {
+  display: block;
+  width: 150rpx;
+  height: 150rpx;
+}
+.user-info-basic .user-info-other {
+  margin-left: 20rpx;
+  color: #fff;
+}
+.user-info-basic .user-name {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+}
+.user-info-basic .user-jointime,
+.user-info-basic .user-score {
+  float: left;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+}

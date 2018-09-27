@@ -1,0 +1,13 @@
+<wxs src="../../filters/index.wxs" module="filters"/>
+
+<view class="topic-item" data-id="{{topic.id}}" bindtap="handleTap">
+  <view class="topic-item-user">
+    <image class="user-avatar" src="{{topic.author.avatar_url}}" lazy-load="true" />
+  </view>
+  <view class="topic-item-info">
+    <view class="info-title">{{topic.title}}</view>
+    <view class="info-metas">
+      <view class="info-meta">{{filters.time.mformat(topic.last_reply_at, 'yyyy-MM-dd')}}</view>
+    </view>
+  </view>
+</view>

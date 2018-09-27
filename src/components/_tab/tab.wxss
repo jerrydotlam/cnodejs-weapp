@@ -1,0 +1,45 @@
+.cn-tab {
+  position: relative;
+  height: 100%;
+}
+.cn-tab__panel {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 50px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.cn-navbar {
+  display: flex;
+  position: absolute;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  border-bottom: 1rpx solid #CCCCCC;
+}
+.cn-navbar__item {
+  position: relative;
+  display: block;
+  flex: 1;
+  padding: 13px 0;
+  text-align: center;
+  font-size: 0;
+}
+.cn-navbar__item.cn-bar__item_on {
+  color: #1AAD19;
+}
+.cn-navbar__slider {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 6em;
+  height: 2rpx;
+  background-color: #1AAD19;
+  transition: transform .3s;
+}
+.cn-navbar__title{
+  display: inline-block;
+  font-size: 15px;
+  max-width: 8em;
+}

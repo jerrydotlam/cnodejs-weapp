@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cnode-tab": "../_tab/tab",
+    "cnode-user-topic": "../usertopic/usertopic"
+  }
+}

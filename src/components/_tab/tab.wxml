@@ -1,0 +1,13 @@
+<view class="cn-tab">
+  <view class="cn-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="cn-navbar__item {{activeIndex == index ? 'cn-bar__item_on' : ''}}" bindtap="handleTabClick">
+        <view class="cn-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="cn-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="cn-tab__panel">
+    <slot></slot>
+  </view>
+</view>
