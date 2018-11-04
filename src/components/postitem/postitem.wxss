@@ -2,7 +2,8 @@
   display: flex;
   margin-bottom: 20rpx;
   padding: 10rpx 0;
-  border: 1rpx solid #e5e5e5;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
 }
 .post-item-user {
   flex: 0 0 40px;
