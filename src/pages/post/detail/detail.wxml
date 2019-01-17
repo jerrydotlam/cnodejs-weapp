@@ -19,7 +19,7 @@
   </view>
   <!-- 文章内容 -->
   <view class="post-detail-article">
-    <rich-text class="weui-article" nodes="{{nodes}}" bindtap="tap"></rich-text>
+    <rich-text class="weui-article" nodes="{{nodes}}"></rich-text>
   </view>
   <!-- 评论列表 -->
   <view class="post-detail-replies">
@@ -30,7 +30,9 @@
       <cnode-reply-item
         wx:for="{{post.replies}}"
         wx:key="{{item.id}}"
-        reply="{{item}}" />
+        reply="{{item}}"
+        data-reply-id="{{item.id}}"
+        bindtap="handleReplyItemTap" />
     </view>
   </view>
 </view>

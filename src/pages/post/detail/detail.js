@@ -1,6 +1,8 @@
 import { post } from '../../../api/index';
 import parser from '../../../lib/parser';
 
+const app = getApp();
+
 Page({
   /**
    * 页面的初始数据
@@ -25,6 +27,32 @@ Page({
               nodes: result
             });
           });
+      });
+  },
+  /**
+   * 评论项点击处理
+   * @param {*} e
+   */
+  handleReplyItemTap: function (e) {
+    console.log(e);
+    const $target = e.target;
+    const replyId = $target.dataset.replyId;
+    post
+      .upReply({ replyId, accesstoken: app.globalData.accessToken })
+      .then((res) => {
+        console.log(res);
+        const data = res.data;
+        if (data.success) {
+          post.replies.forEach((item) => {
+            if (data.action === 'up') {
+              item.ups.push();
+            } else {
+              // 移除支持者
+            }
+          });
+        } else {
+          // TODO 提示错误
+        }
       });
   },
   /**

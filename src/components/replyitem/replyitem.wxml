@@ -1,18 +1,24 @@
 <wxs src="../../filters/index.wxs" module="filters"/>
 
-<view class="reply-item" data-id="{{reply.id}}" bindtap="handleTap">
-  <view class="reply-item-user">
-    <image class="user-avatar" src="{{reply.author.avatar_url}}" lazy-load="true" />
+<view class="reply-item">
+  <view class="reply-item-avatar">
+    <image class="reply-item-avatar__img" src="{{reply.author.avatar_url}}" lazy-load="true" />
   </view>
-  <view class="reply-item-info">
-    <view class="reply-item-meta">
-      <view class="info-meta">{{reply.autor.loginname}}</view>
-      <view class="info-meta">{{filters.time.mformat(reply.create_at, 'yyyy-MM-dd')}}</view>
-      <view class="info-meta">点赞 {{reply.ups.length}}</view>
-      <view class="info-meta">回复</view>
+  <view class="reply-item-detail">
+    <view class="reply-item-info">
+      <view class="reply-item-user">
+        <navigator class="cnode-user-link"
+          url="/pages/user/user?loginname={{reply.author.loginname}}"
+          open-type="switchTab">{{reply.author.loginname}}</navigator>
+      </view>
+      <view class="reply-item-time">{{filters.time.mformat(reply.create_at, 'yyyy-MM-dd')}}</view>
+      <view class="reply-item-action">
+        <view class="reply-item-action__btn {{!reply.upit ? 'reply-item-action__btn--on' : ''}} iconfont icon-good"> {{reply.ups.length}}</view>
+        <view class="reply-item-action__btn iconfont icon-reply"></view>
+      </view>
     </view>
     <view class="reply-item-body">
-      <rich-text class="weui-article" nodes="{{reply.nodes}}" bindtap="tap"></rich-text>
+      <rich-text class="weui-article" nodes="{{reply.nodes}}"></rich-text>
     </view>
   </view>
 </view>

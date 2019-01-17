@@ -4,18 +4,25 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false,
+		"uglifyFileName": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.3",
-	"appid": "wxbdccb940b549af38",
+	"appid": "wxee960560bb915bba",
 	"projectname": "cnodejs-miniprogram",
-	"miniprogramRoot": "./src",
+	"miniprogramRoot": "src/",
 	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "./bin/cnode.js",
+		"beforePreview": "./bin/cnode.js",
+		"beforeUpload": ""
+	},
 	"condition": {
 		"search": {
 			"current": -1,
