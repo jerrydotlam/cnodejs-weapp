@@ -15,7 +15,6 @@ Component({
       parser
         .parse(this.data.reply.content)
         .then((result) => {
-          console.log(result);
           this.setData({
             'reply.nodes': result
           });

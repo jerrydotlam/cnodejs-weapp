@@ -1,6 +1,9 @@
 @import './npm/weui.wxss';
 
 /**app.wxss**/
+page {
+  background-color: #ffffff;
+}
 .container {
   height: 100%;
   display: flex;
@@ -13,4 +16,25 @@
 .cnode-user-link {
   display: inline-block;
   color: #08c;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 903131 */
+  src: url('//at.alicdn.com/t/font_903131_zoezjv8uu1c.eot');
+  src: url('//at.alicdn.com/t/font_903131_zoezjv8uu1c.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_903131_zoezjv8uu1c.woff') format('woff'),
+  url('//at.alicdn.com/t/font_903131_zoezjv8uu1c.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_903131_zoezjv8uu1c.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-reply:before {
+  content: "\e646";
+}
+.icon-good:before {
+  content: "\e627";
 }

@@ -36,6 +36,12 @@ Component({
    * 组件的方法，包括事件响应函数和任意的自定义方法
    */
   methods: {
+    setPayload: function (payload = {}) {
+      this.setData({
+        payload: Object.assign({}, this.data.payload, payload)
+      });
+      this.getPageData();
+    },
     getPageData: function (page = 1) {
       if (page > 1 && !this.data.hasMoreData) {
         return;

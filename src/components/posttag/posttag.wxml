@@ -1,0 +1,10 @@
+<view class="post-tag">
+  <block wx:for="{{tags}}" wx:key="*this">
+    <view id="{{index}}"
+      data-value="{{item.value}}"
+      class="post-tag__item {{activeTag == item.value ? 'post-tag__item--on' : ''}}"
+      bindtap="handleTagClick">
+      {{item.label}}
+    </view>
+  </block>
+</view>

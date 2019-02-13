@@ -1,0 +1,15 @@
+.post-tag {
+  padding: 20rpx;
+  background-color: #f6f6f6;
+}
+.post-tag__item {
+  display: inline-block;
+  margin: 0 20rpx;
+  color: #80bd01;
+}
+.post-tag__item--on {
+  background-color: #80bd01;
+  color: #fff;
+  padding: 6rpx 10rpx;
+  border-radius: 6rpx;
+}

@@ -1,4 +1,13 @@
+.post-tags {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 .post-list {
+  margin-top: 100rpx;
+}
+/* .post-list {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -17,4 +26,4 @@
 .post-item-time {
   font-size: 20rpx;
   color: #999;
-}
+} */

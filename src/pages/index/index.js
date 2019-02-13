@@ -36,6 +36,16 @@ Page({
     });
   },
   /**
+   * tag切换事件处理
+   * @param {Event} e tag切换事件
+   */
+  handleChangeTag: function (e) {
+    const detail = e.detail;
+    this.$list.setPayload({
+      tab: detail.tag
+    });
+  },
+  /**
    * 生命周期回调—监听页面加载
    * @param {Object} options
    */
